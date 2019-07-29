@@ -1,17 +1,19 @@
 class Genre
   attr_accessor :name
 
+@@all = []
+
   def initialize(name)
     @name = name
-    @songs = []
+    @@all << self
   end
 
   def songs
-    @songs
+    Song.all { |song| song.genre == self }
   end
 
   def add_song(song)
-    @songs << song
+    songs << song     ## is this because of the song method above?
   end
 
   def artists
@@ -20,6 +22,6 @@ class Genre
     end
   end
 
-  def genre.all
-    @songs.all
+  def self.all
+    @@all
 end
